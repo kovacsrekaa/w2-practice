@@ -1,97 +1,50 @@
-/*let stringVariable = "text"
-let numberVariable = 15
-let booleanVariable = true
 
-function myFunction(param1, param2) {
-    return param1 + param2
+
+
+//console.log(rootElement)
+
+//let htmlContent = "<h2>Hello world, my name is Reka</h2>"
+
+/*rootElement.insertAdjacentHTML("beforeend", htmlContent)
+
+//let counter = 0; 
+
+/*while (counter < 10) {
+    rootElement.insertAdjacentHTML("beforeend", htmlContent);
+    counter = counter +1;
+} */
+
+/*for (let counter = 1; counter <= 10; counter++) {
+    rootElement.insertAdjacentHTML("beforeend", htmlContent) 
 }
 
-console.log(stringVariable, numberVariable, booleanVariable) */
+let array= ["alma", "körte", "vegyes", "birs","vegyes", "szilva",'eper']
 
-/*let array = ["alma", 12, false, undefined, null]
+for (let index = 0; index < array.length; index++) {
+    rootElement.insertAdjacentHTML("beforeend", `<h2> ${array[index]} </h2>`) */  
+//} 
 
-console.log(array) */
+console.log("loaded");
+let rootElement = document.querySelector("#root");
 
-/*let stringArray = ["Imola Ács", "Pali Herrer", "Nagy Zsombor"] 
+fetch("https://restcountries.com/v3.1/all")
+.then(function(response) {
+    return response.json();
+})
+.then(function(data) {
+    console.log(data);
 
-console.log(stringArray[0]) */
-
-/*let myObj = {
-    key1: "value1",
-    key2: "value2",
-    key4: 15,
-    key5: 600,
-    key6: true,
-    key7: ["Imola Ács", "Pali Herrer", "Nagy Zsombor"]
-}
-
-console.log(myObj.key7[2]) */
-
-
-/*let myFacebook ={
-    name: "Márta Richárd",
-    age: 28,
-    location: "Budapest",
-    friends: ["Gipsz Jakab", "John Doe", "Példa Péter"]
-    favoriteMovies:[
-        {
-            title: "Harry Potter"
-            year: 2001,
-            characters: [ "Harry Potter", "Ronald Weasley", "Hedvig"]
-        },
-        {
-            title: "Ananász Expressz"
-            year: 2012,
-            characters: ["Ez", "az", "amaz"]
-        },
-        {
-            title: "Üvegtigris"
-            year: 2000,
-            characters: ["Csoki", "Lali", "Gaben"]
-        },
-    ],
-};
-
-console.log(myFacebook.favoriteMovies[0].characters[1]) */  //HáziFeladat: Tömb gyártása, objektum, kulcsok, értékek kikeresése a végén. Objektum amiben tömb van, Tömb amiben objektum van, Tömb a tömbben //
-
-
-function negativeOrPositive(number) {
-    if (number < 0) {
-        return "negative"
-    } else if  (number > 0) {
-        return "positive"
-    } else {
-        return "zero"
-    }
-
-}
-
-function logger(text) {
-    console.log(text)
-}
-
-/*logger(negativeOrPositive(3)) */
-
-function decideIfBeerIsGood(beer) {
-    if(beer.price < 340 && beer.abv > 4.7) {
-        return beer.name + ": jó sör mert olcsó és üt"
-    } else if (beer.price < 340) {
-        return beer.name + ": jó sör mert olcsó"
-    } else if ( beer.abv > 4.7 ) {
-        return beer.name + ":jó sör mert üt"
-    } else {
-        return beer.name + ": nem jó"
-    }
+    for (let index = 0; index < data.length; index ++){
+        let countryName = data[index].name.common;
+        let countryPop = data[index].population;
+        let countryArea = data[index].area;
         
+        rootElement.insertAdjacentHTML("beforeend", `
+        <div class = "country">
+            <h2> ${countryName} </h2>
+            <p> population: ${countryPop} </p>
+            <p> area: ${countryArea}km2 </p>
+            </div>
+        `)
     }
-
-let dreher = {name: "Dreher", price: 349, abv: 5}
-let soproni= {name: "soproni", price: 329, abv: 4.5}
-let borsodi= {name: "borsodi", price: 339, abv: 4.8}
-let pecsi= {name: "pécsi", price: 379, abv: 4.2}
-
-logger(decideIfBeerIsGood(dreher))
-logger(decideIfBeerIsGood(soproni))
-logger(decideIfBeerIsGood(borsodi))
-logger(decideIfBeerIsGood(pecsi))
-
+})

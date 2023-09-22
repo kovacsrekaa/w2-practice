@@ -1,39 +1,34 @@
-/* --- CSS RESET --- */
-* {
+ *{
     margin: 0;
     padding: 0;
-    border: 0;
-}
+     
+    box-sizing: border-box;
+ }
 
-/* --- CSS RESET END --- */
+ #root {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+ }
+.country {
+    width: 300px; 
+    min-height: 160px;
 
-body { 
-    background-color: #FFEEDF;
+    padding: 20px;
+    
+    border: 1px solid black; 
     
 }
 
-button {
-    background-color: #1C5A4E;
-    width: 240px;
-    height: 240px; 
-    border-radius: 120px; /*  */
-
-    color: #FFEEDF; 
-    font-size: 200px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 300;
-
-    position: absolute; 
-    top: 50%;
-    left: 50%;
-
-    transform: translate(-50%, -50%) 
-}
-span {
-    position: absolute;
-    top: -10px;
-    left: 50%;
-    transform: translate(-50%);
+.country h2 {
+    min-height: 80px;
+    text-align: center;
 }
 
-
+.country p {
+    text-align: center;
+}
